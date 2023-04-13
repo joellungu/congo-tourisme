@@ -1,6 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:congo_tourisme/pages/etablissements/etablissement.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import 'decouvertes/decouverte.dart';
+import 'evenements/evenement.dart';
+import 'identifications/identification.dart';
 
 class Accueil extends StatelessWidget {
   @override
@@ -77,16 +82,20 @@ class Accueil extends StatelessWidget {
               }).toList(),
             ),
             ListTile(
-              leading: Icon(
+              onTap: () {
+                //
+                Get.to(Identification());
+              },
+              leading: const Icon(
                 Icons.people,
                 color: Colors.teal,
               ),
-              title: Text("Identification acteur touristique"),
+              title: const Text("Identification acteur touristique"),
             ),
             ListTile(
               leading: Container(
                 decoration: BoxDecoration(
-                  image: DecorationImage(
+                  image: const DecorationImage(
                     image: ExactAssetImage("assets/tourisme (20).jpg"),
                     fit: BoxFit.cover,
                   ),
@@ -96,10 +105,13 @@ class Accueil extends StatelessWidget {
                 width: 40,
                 alignment: Alignment.bottomCenter,
               ),
-              title: Text("Posters des évenements"),
+              title: const Text("Posters des évenements"),
             ),
             ListTile(
-              leading: Icon(
+              onTap: () {
+                //
+              },
+              leading: const Icon(
                 Icons.monetization_on,
                 color: Colors.teal,
               ),
@@ -117,48 +129,28 @@ class Accueil extends StatelessWidget {
               elevation: 1,
               margin: EdgeInsets.all(2),
               color: Colors.green,
-              child: Container(
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: ExactAssetImage("assets/tourisme (11).jpg"),
-                    fit: BoxFit.cover,
+              child: InkWell(
+                onTap: () {
+                  Get.to(Decouverte());
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: ExactAssetImage("assets/tourisme (11).jpg"),
+                      fit: BoxFit.cover,
+                    ),
+                    borderRadius: BorderRadius.circular(20),
                   ),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                height: Get.size.height / 4,
-                width: double.infinity,
-                alignment: Alignment.bottomCenter,
-                child: Text(
-                  "Découvire la RDC",
-                  style: TextStyle(
-                    color: Colors.grey.shade200,
-                    fontSize: 27,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ),
-            Card(
-              elevation: 1,
-              color: Colors.green,
-              child: Container(
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: ExactAssetImage("assets/tourisme(18).jpeg"),
-                    fit: BoxFit.cover,
-                  ),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                height: Get.size.height / 4,
-                width: double.infinity,
-                alignment: Alignment.bottomCenter,
-                child: Text(
-                  "Etablessements touristiques",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.grey.shade200,
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
+                  height: Get.size.height / 4,
+                  width: double.infinity,
+                  alignment: Alignment.bottomCenter,
+                  child: Text(
+                    "Découvire la RDC",
+                    style: TextStyle(
+                      color: Colors.grey.shade200,
+                      fontSize: 27,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),
@@ -166,24 +158,60 @@ class Accueil extends StatelessWidget {
             Card(
               elevation: 1,
               color: Colors.green,
-              child: Container(
-                decoration: BoxDecoration(
-                  image: const DecorationImage(
-                    image: ExactAssetImage("assets/tourisme (19).jpg"),
-                    fit: BoxFit.cover,
+              child: InkWell(
+                onTap: () {
+                  Get.to(Etablissement());
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: ExactAssetImage("assets/tourisme(18).jpeg"),
+                      fit: BoxFit.cover,
+                    ),
+                    borderRadius: BorderRadius.circular(20),
                   ),
-                  borderRadius: BorderRadius.circular(20),
+                  height: Get.size.height / 4,
+                  width: double.infinity,
+                  alignment: Alignment.bottomCenter,
+                  child: Text(
+                    "Etablessements touristiques",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.grey.shade200,
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
-                height: Get.size.height / 4,
-                width: double.infinity,
-                alignment: Alignment.bottomCenter,
-                child: Text(
-                  "Evenements touristiques et culturels",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.grey.shade200,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
+              ),
+            ),
+            Card(
+              //
+              elevation: 1,
+              color: Colors.green,
+              child: InkWell(
+                onTap: () {
+                  Get.to(Evenement());
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    image: const DecorationImage(
+                      image: ExactAssetImage("assets/tourisme (19).jpg"),
+                      fit: BoxFit.cover,
+                    ),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  height: Get.size.height / 4,
+                  width: double.infinity,
+                  alignment: Alignment.bottomCenter,
+                  child: Text(
+                    "Evenements touristiques et culturels",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.grey.shade200,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),

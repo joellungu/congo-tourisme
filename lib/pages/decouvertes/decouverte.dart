@@ -2,7 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class Etablissement extends StatelessWidget {
+class Decouverte extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -10,7 +10,7 @@ class Etablissement extends StatelessWidget {
         backgroundColor: Colors.teal.shade900,
         elevation: 0,
         title: Text(
-          "Congo Tourisme",
+          "Decouvrir la RDC",
           style: TextStyle(color: Colors.white, fontSize: 20),
         ),
       ),
@@ -35,11 +35,11 @@ class Etablissement extends StatelessWidget {
                 Align(
                   alignment: Alignment.center,
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 30,
-                    ),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 50, vertical: 0),
                     child: TextField(
                       decoration: InputDecoration(
+                        contentPadding: EdgeInsets.symmetric(vertical: 4),
                         filled: true,
                         fillColor: Colors.teal.shade900,
                         border: OutlineInputBorder(
@@ -61,36 +61,69 @@ class Etablissement extends StatelessWidget {
             child: ListView(
               padding: const EdgeInsets.all(10),
               children: [
-                Card(
-                  elevation: 1,
-                  child: SizedBox(
-                    height: Get.size.height / 4,
-                    width: double.infinity,
-                    child: CarouselSlider(
-                      options: CarouselOptions(height: Get.size.height / 4.1),
-                      items: [1, 2, 3, 4, 5].map((i) {
-                        return Builder(
-                          builder: (BuildContext context) {
-                            return Container(
-                              width: MediaQuery.of(context).size.width,
-                              margin: EdgeInsets.symmetric(horizontal: 5.0),
-                              decoration: BoxDecoration(color: Colors.amber),
-                              child: Text(
-                                'text $i',
-                                style: TextStyle(fontSize: 16.0),
-                              ),
-                            );
-                          },
-                        );
-                      }).toList(),
-                    ),
-                  ),
-                )
+                // Padding(
+                //   padding: EdgeInsets.only(
+                //     left: 10,
+                //   ),
+                //   child: Text(
+                //     "Parc de Virunga",
+                //     style: TextStyle(
+                //       fontWeight: FontWeight.bold,
+                //     ),
+                //   ),
+                // ),
+                carte('Parc de Virunga'),
+                carte('Parc de Virunga'),
+                carte('Parc de Virunga'),
+                carte('Parc de Virunga'),
+                carte('Parc de Virunga'),
+                carte('Parc de Virunga'),
+                carte('Parc de Virunga'),
+                carte('Parc de Virunga'),
               ],
             ),
           )
         ],
       ),
+    );
+  }
+
+  Widget carte(String text) {
+    return CarouselSlider(
+      options: CarouselOptions(
+        height: Get.size.height / 4,
+        aspectRatio: 16 / 9,
+        viewportFraction: 1,
+        autoPlay: true,
+        autoPlayAnimationDuration: const Duration(seconds: 1),
+      ),
+      items: [1, 2, 3, 4, 5].map((i) {
+        return Builder(
+          builder: (BuildContext context) {
+            return Container(
+              margin: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: ExactAssetImage("assets/tourisme (9).jpg"),
+                  fit: BoxFit.cover,
+                ),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              height: Get.size.height / 4,
+              width: double.infinity,
+              alignment: Alignment.bottomCenter,
+              child: Text(
+                text,
+                style: TextStyle(
+                  color: Colors.grey.shade200,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            );
+          },
+        );
+      }).toList(),
     );
   }
 }
