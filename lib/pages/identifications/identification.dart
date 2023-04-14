@@ -2,12 +2,15 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'formulaire.dart';
+
 class Identification extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Identification"),
+        backgroundColor: Colors.teal.shade900,
+        title: const Text("Identification"),
         centerTitle: true,
       ),
       body: Padding(
@@ -57,46 +60,51 @@ class Identification extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: SizedBox(
-                height: 200,
-                width: double.infinity,
-                child: Row(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(5),
-                      width: 150,
-                      height: Get.size.height / 2.1,
-                      alignment: Alignment.center,
-                      decoration: const BoxDecoration(
-                        color: Colors.yellow,
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(10),
-                          bottomLeft: Radius.circular(10),
-                          topRight: Radius.circular(200),
-                          bottomRight: Radius.circular(20),
-                        ),
-                      ),
-                      child: const Text(
-                        "S'identifier comme acteur touristique",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          image: const DecorationImage(
-                            image: ExactAssetImage("assets/logo.png"),
-                            fit: BoxFit.contain,
+              child: InkWell(
+                onTap: () {
+                  Get.to(Formulaire());
+                },
+                child: SizedBox(
+                  height: 200,
+                  width: double.infinity,
+                  child: Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(5),
+                        width: 150,
+                        height: Get.size.height / 2.1,
+                        alignment: Alignment.center,
+                        decoration: const BoxDecoration(
+                          color: Colors.yellow,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(10),
+                            bottomLeft: Radius.circular(10),
+                            topRight: Radius.circular(200),
+                            bottomRight: Radius.circular(20),
                           ),
-                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: const Text(
+                          "S'identifier comme acteur touristique",
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                      Expanded(
+                        flex: 1,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            image: const DecorationImage(
+                              image: ExactAssetImage("assets/logo.png"),
+                              fit: BoxFit.contain,
+                            ),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

@@ -3,15 +3,31 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class Evenement extends StatelessWidget {
+  List etablissements = [
+    "Vestival de Jazz",
+    "Vestival de GUNGU",
+    "Miss RDC",
+    "Concert Fally Ipupa",
+  ];
+  List images = [
+    "vestival (4).jpg",
+    "tourisme (20).jpg",
+    "vestival (2).jpg",
+    "concert.jpeg",
+  ];
+  //
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.teal.shade900,
         elevation: 0,
-        title: Text(
-          "Congo Tourisme",
-          style: TextStyle(color: Colors.white, fontSize: 20),
+        title: const Text(
+          "Evenements touristiques et culturels",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 15,
+          ),
         ),
       ),
       body: Column(
@@ -35,11 +51,11 @@ class Evenement extends StatelessWidget {
                 Align(
                   alignment: Alignment.center,
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 30,
-                    ),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 50, vertical: 0),
                     child: TextField(
                       decoration: InputDecoration(
+                        contentPadding: EdgeInsets.symmetric(vertical: 4),
                         filled: true,
                         fillColor: Colors.teal.shade900,
                         border: OutlineInputBorder(
@@ -52,43 +68,57 @@ class Evenement extends StatelessWidget {
                       ),
                     ),
                   ),
-                ),
+                )
               ],
             ),
           ),
           Expanded(
             flex: 1,
-            child: ListView(
+            child: Padding(
               padding: const EdgeInsets.all(10),
-              children: [
-                Card(
-                  elevation: 1,
-                  child: SizedBox(
-                    height: Get.size.height / 4,
-                    width: double.infinity,
-                    child: CarouselSlider(
-                      options: CarouselOptions(height: Get.size.height / 4.1),
-                      items: [1, 2, 3, 4, 5].map((i) {
-                        return Builder(
-                          builder: (BuildContext context) {
-                            return Container(
-                              width: MediaQuery.of(context).size.width,
-                              margin: EdgeInsets.symmetric(horizontal: 5.0),
-                              decoration: BoxDecoration(color: Colors.amber),
-                              child: Text(
-                                'text $i',
-                                style: TextStyle(fontSize: 16.0),
-                              ),
-                            );
-                          },
-                        );
-                      }).toList(),
+              child: GridView.count(
+                //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisCount: 2,
+                mainAxisSpacing: 2,
+                crossAxisSpacing: 2,
+                children: List.generate(etablissements.length, (index) {
+                  return Card(
+                    elevation: 1,
+                    margin: EdgeInsets.all(2),
+                    color: Colors.green,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
                     ),
-                  ),
-                )
-              ],
+                    child: InkWell(
+                      onTap: () {
+                        //Get.to(ListeEtablissements("${etablissements[index]}"));
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: ExactAssetImage("assets/${images[index]}"),
+                            fit: BoxFit.cover,
+                          ),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        height: Get.size.height / 4.5,
+                        width: double.infinity,
+                        alignment: Alignment.bottomCenter,
+                        child: Text(
+                          "${etablissements[index]}",
+                          style: TextStyle(
+                            color: Colors.grey.shade200,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                }),
+              ),
             ),
-          )
+          ),
         ],
       ),
     );

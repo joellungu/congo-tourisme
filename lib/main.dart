@@ -16,11 +16,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Congo Tourisme',
-      theme: ThemeData(
-        primarySwatch: Utils.gojekSwatch,
-      ),
-      home: Accueil(),
-    );
+        title: 'Congo Tourisme',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Utils.gojekSwatch,
+        ),
+        home: Splash()
+        //Accueil(),
+        );
   }
 }

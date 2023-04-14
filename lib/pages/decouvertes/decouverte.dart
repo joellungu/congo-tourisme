@@ -52,7 +52,7 @@ class Decouverte extends StatelessWidget {
                       ),
                     ),
                   ),
-                ),
+                )
               ],
             ),
           ),
@@ -72,14 +72,14 @@ class Decouverte extends StatelessWidget {
                 //     ),
                 //   ),
                 // ),
-                carte('Parc de Virunga'),
-                carte('Parc de Virunga'),
-                carte('Parc de Virunga'),
-                carte('Parc de Virunga'),
-                carte('Parc de Virunga'),
-                carte('Parc de Virunga'),
-                carte('Parc de Virunga'),
-                carte('Parc de Virunga'),
+                carte('Parc de Virunga', 3),
+                carte('Parc de Virunga', 6),
+                carte('Parc de Virunga', 7),
+                carte('Parc de Virunga', 10),
+                carte('Parc de Virunga', 15),
+                carte('Parc de Virunga', 1),
+                carte('Parc de Virunga', 8),
+                carte('Parc de Virunga', 9),
               ],
             ),
           )
@@ -88,7 +88,7 @@ class Decouverte extends StatelessWidget {
     );
   }
 
-  Widget carte(String text) {
+  Widget carte(String text, int t) {
     return CarouselSlider(
       options: CarouselOptions(
         height: Get.size.height / 4,
@@ -104,7 +104,7 @@ class Decouverte extends StatelessWidget {
               margin: const EdgeInsets.all(10),
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: ExactAssetImage("assets/tourisme (9).jpg"),
+                  image: ExactAssetImage("assets/tourisme (${t + i}).jpg"),
                   fit: BoxFit.cover,
                 ),
                 borderRadius: BorderRadius.circular(20),

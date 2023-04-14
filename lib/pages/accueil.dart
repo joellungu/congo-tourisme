@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'decouvertes/decouverte.dart';
 import 'evenements/evenement.dart';
 import 'identifications/identification.dart';
+import 'taxes/taxes.dart';
 
 class Accueil extends StatelessWidget {
   @override
@@ -93,6 +94,18 @@ class Accueil extends StatelessWidget {
               title: const Text("Identification acteur touristique"),
             ),
             ListTile(
+              onTap: () {
+                //
+                Get.to(Taxes());
+                //
+              },
+              leading: const Icon(
+                Icons.monetization_on,
+                color: Colors.teal,
+              ),
+              title: Text("Taxes et redevances touristiques"),
+            ),
+            ListTile(
               leading: Container(
                 decoration: BoxDecoration(
                   image: const DecorationImage(
@@ -107,16 +120,6 @@ class Accueil extends StatelessWidget {
               ),
               title: const Text("Posters des évenements"),
             ),
-            ListTile(
-              onTap: () {
-                //
-              },
-              leading: const Icon(
-                Icons.monetization_on,
-                color: Colors.teal,
-              ),
-              title: Text("Taxes et redevances touristiques"),
-            ),
           ],
         ),
       ),
@@ -127,6 +130,9 @@ class Accueil extends StatelessWidget {
           children: [
             Card(
               elevation: 1,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
               margin: EdgeInsets.all(2),
               color: Colors.green,
               child: InkWell(
@@ -157,6 +163,9 @@ class Accueil extends StatelessWidget {
             ),
             Card(
               elevation: 1,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
               color: Colors.green,
               child: InkWell(
                 onTap: () {
@@ -188,6 +197,10 @@ class Accueil extends StatelessWidget {
             Card(
               //
               elevation: 1,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+
               color: Colors.green,
               child: InkWell(
                 onTap: () {
