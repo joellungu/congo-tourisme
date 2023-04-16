@@ -22,13 +22,14 @@ class _Formulaire extends State<Formulaire> {
   TextEditingController nom = TextEditingController();
   TextEditingController postnom = TextEditingController();
   TextEditingController prenom = TextEditingController();
-  TextEditingController nom_pere = TextEditingController();
-  TextEditingController nom_mere = TextEditingController();
   TextEditingController telephone = TextEditingController();
   TextEditingController adresse = TextEditingController();
-  TextEditingController lieu_de_naissance = TextEditingController();
   TextEditingController email = TextEditingController();
-  //
+  TextEditingController lieu_de_naissance = TextEditingController();
+  //certificat
+  TextEditingController certificatAgre = TextEditingController();
+  TextEditingController certificatOmo = TextEditingController();
+  TextEditingController licence = TextEditingController();
   TextEditingController cellule = TextEditingController();
   TextEditingController etablissement = TextEditingController();
   TextEditingController lieu = TextEditingController();
@@ -103,6 +104,17 @@ class _Formulaire extends State<Formulaire> {
     "AJUSTAGE ET SOUDURE,923",
   ];
   //
+  RxList categorie = [""].obs;
+  List hotel = ["1 Etoile", "2 Etoile", "3 Etoile", "4 Etoile", "5 Etoile"].obs;
+  List restaurant = [
+    "1 Fourchette",
+    "2 Fourchette",
+    "3 Fourchette",
+    "4 Fourchette",
+  ].obs;
+  RxList autre = ["Catégorie A", "Catégorie B"].obs;
+
+  //
   int a = 0;
   int s = 0;
   int b = 0;
@@ -111,8 +123,8 @@ class _Formulaire extends State<Formulaire> {
   //
   int option = 0;
   int p_e = 0;
-  int n_e = 0;
-  int p_o = 0;
+  int n_e = 1;
+  int cat = 0;
   //
   XFile? photo;
   //
@@ -224,6 +236,7 @@ class _Formulaire extends State<Formulaire> {
     // TODO: implement initState
     super.initState();
     //
+    categorie.value = hotel;
 
     listeDistrict.clear();
     //
@@ -523,7 +536,6 @@ class _Formulaire extends State<Formulaire> {
           const SizedBox(
             height: 10,
           ),
-
           const SizedBox(
             height: 10,
           ),
@@ -821,6 +833,141 @@ class _Formulaire extends State<Formulaire> {
             margin: EdgeInsets.all(0),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
+              side: const BorderSide(color: Colors.grey),
+            ),
+            child: Container(
+              height: 50,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "  Licence/permis/exploitation : ",
+                    style: TextStyle(fontSize: 12),
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: Container(
+                      alignment: Alignment.center,
+                      //width: Get.size.width,
+                      child: TextField(
+                        controller: licence,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 13,
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Card(
+            elevation: 0,
+            margin: EdgeInsets.all(0),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+              side: const BorderSide(color: Colors.grey),
+            ),
+            child: Container(
+              height: 50,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "  Certificat agré. technique : ",
+                    style: TextStyle(fontSize: 12),
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: Container(
+                      alignment: Alignment.center,
+                      //width: Get.size.width,
+                      child: TextField(
+                        controller: certificatAgre,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 13,
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Card(
+            elevation: 0,
+            margin: EdgeInsets.all(0),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+              side: const BorderSide(color: Colors.grey),
+            ),
+            child: Container(
+              height: 50,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "  Certificat homologation : ",
+                    style: TextStyle(fontSize: 12),
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: Container(
+                      alignment: Alignment.center,
+                      //width: Get.size.width,
+                      child: TextField(
+                        controller: certificatAgre,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 13,
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Card(
+            elevation: 0,
+            margin: EdgeInsets.all(0),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
               side: BorderSide(color: Colors.grey),
             ),
             child: Container(
@@ -869,55 +1016,86 @@ class _Formulaire extends State<Formulaire> {
             ),
             child: Container(
               height: 50,
+              width: double.infinity,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  const Text("  Type établissement:"),
+                  const Text(" Type établissement:"),
                   const SizedBox(
-                    width: 20,
+                    width: 5,
                   ),
                   Expanded(
                     flex: 1,
                     child: DropdownButtonHideUnderline(
-                      child: DropdownButtonFormField<int>(
-                        value: 1,
+                      child: DropdownButton<int>(
+                        value: n_e,
+                        isExpanded: true,
                         onChanged: (value) {
-                          n_e = value as int;
-                          //value = s;
+                          setState(() {
+                            n_e = value as int;
+                            cat = 0;
+                          });
+                          // if (n_e == 0) {
+                          //   categorie.value = hotel;
+                          // } else if (n_e == 1) {
+                          //   categorie.value = restaurant;
+                          // } else {
+                          //   categorie.value = autre;
+                          // }
                         },
                         /*
                         */
                         items: const [
                           DropdownMenuItem(
                             value: 1,
-                            child: Text("Certificat d'étude primaire"),
+                            child: Text("Hotel"),
                           ),
                           DropdownMenuItem(
                             value: 2,
-                            child: Text("Diplomé d'Etat"),
+                            child: Text("Restaurant"),
                           ),
                           DropdownMenuItem(
                             value: 3,
-                            child: Text("Gradué"),
+                            child: Text("Service traiteur (Minièr)"),
                           ),
                           DropdownMenuItem(
                             value: 4,
-                            child: Text("Licencié"),
+                            child: Text("Agence de voyage"),
                           ),
                           DropdownMenuItem(
                             value: 5,
-                            child: Text("Master"),
+                            child: Text("Agence de tourisme"),
                           ),
                           DropdownMenuItem(
                             value: 6,
-                            child: Text("Doctorat"),
+                            child: Text("Tour opérateur"),
                           ),
                           DropdownMenuItem(
                             value: 7,
-                            child: Text("Formation professionnelle"),
+                            child: Text("Site touristique"),
+                          ),
+                          DropdownMenuItem(
+                            value: 8,
+                            child: Text("Compagnie transport aerienne"),
+                          ),
+                          DropdownMenuItem(
+                            value: 9,
+                            child: Text("Compagnie transport maritime"),
+                          ),
+                          DropdownMenuItem(
+                            value: 10,
+                            child: Text("Compagnie transport ferovière"),
+                          ),
+                          DropdownMenuItem(
+                            value: 11,
+                            child: Text("Compagnie transport routié"),
+                          ),
+                          DropdownMenuItem(
+                            value: 12,
+                            child: Text("Compagnie transport lacustre"),
                           ),
                         ],
                       ),
@@ -932,7 +1110,7 @@ class _Formulaire extends State<Formulaire> {
           ),
           Card(
             elevation: 0,
-            margin: EdgeInsets.all(0),
+            margin: const EdgeInsets.all(0),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
               side: BorderSide(color: Colors.grey),
@@ -951,48 +1129,72 @@ class _Formulaire extends State<Formulaire> {
                   ),
                   Expanded(
                     flex: 1,
-                    child: DropdownButtonHideUnderline(
-                      child: DropdownButtonFormField<int>(
-                        value: 1,
-                        onChanged: (value) {
-                          n_e = value as int;
-                          //value = s;
-                        },
-                        /*
+                    child: n_e == 1
+                        ? DropdownButtonHideUnderline(
+                            child: DropdownButton<int>(
+                              value: cat,
+                              onChanged: (value) {
+                                setState(() {
+                                  cat = value as int;
+                                });
+                              },
+                              /*
                         */
-                        items: const [
-                          DropdownMenuItem(
-                            value: 1,
-                            child: Text("Certificat d'étude primaire"),
-                          ),
-                          DropdownMenuItem(
-                            value: 2,
-                            child: Text("Diplomé d'Etat"),
-                          ),
-                          DropdownMenuItem(
-                            value: 3,
-                            child: Text("Gradué"),
-                          ),
-                          DropdownMenuItem(
-                            value: 4,
-                            child: Text("Licencié"),
-                          ),
-                          DropdownMenuItem(
-                            value: 5,
-                            child: Text("Master"),
-                          ),
-                          DropdownMenuItem(
-                            value: 6,
-                            child: Text("Doctorat"),
-                          ),
-                          DropdownMenuItem(
-                            value: 7,
-                            child: Text("Formation professionnelle"),
-                          ),
-                        ],
-                      ),
-                    ),
-                  )
+                              items: List.generate(
+                                hotel.length,
+                                (index) {
+                                  return DropdownMenuItem(
+                                    value: index,
+                                    child: Text("${hotel[index]}"),
+                                  );
+                                },
+                              ),
+                            ),
+                          )
+                        : n_e == 2
+                            ? DropdownButtonHideUnderline(
+                                child: DropdownButton<int>(
+                                  value: cat,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      cat = value as int;
+                                    });
+                                  },
+                                  /*
+                        */
+                                  items: List.generate(
+                                    restaurant.length,
+                                    (index) {
+                                      return DropdownMenuItem(
+                                        value: index,
+                                        child: Text("${restaurant[index]}"),
+                                      );
+                                    },
+                                  ),
+                                ),
+                              )
+                            : DropdownButtonHideUnderline(
+                                child: DropdownButton<int>(
+                                  value: cat,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      cat = value as int;
+                                    });
+                                  },
+                                  /*
+                        */
+                                  items: List.generate(
+                                    autre.length,
+                                    (index) {
+                                      return DropdownMenuItem(
+                                        value: index,
+                                        child: Text("${autre[index]}"),
+                                      );
+                                    },
+                                  ),
+                                ),
+                              ),
+                  ),
                 ],
               ),
             ),
@@ -1049,7 +1251,7 @@ class _Formulaire extends State<Formulaire> {
           const Align(
             alignment: Alignment.centerLeft,
             child: Text(
-              "Information supplementaire sur les succursales",
+              "Informations supplementaires sur les succursales",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
               ),
@@ -1281,8 +1483,6 @@ class _Formulaire extends State<Formulaire> {
                     "genre": genres[genre],
                   };
                   //
-                  //
-                  Get.back();
                   //
                   showDialog(
                     context: context,

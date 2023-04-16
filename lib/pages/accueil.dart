@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 
 import 'decouvertes/decouverte.dart';
 import 'evenements/evenement.dart';
+import 'fond_tourisme/fond_tourisme.dart';
 import 'identifications/identification.dart';
 import 'taxes/taxes.dart';
 
@@ -44,7 +45,11 @@ class Accueil extends StatelessWidget {
       drawer: Drawer(
         elevation: 1,
         child: ListView(
-          padding: const EdgeInsets.all(10),
+          padding: const EdgeInsets.only(
+            top: 30,
+            left: 10,
+            right: 10,
+          ),
           children: [
             CarouselSlider(
               options: CarouselOptions(
@@ -104,6 +109,18 @@ class Accueil extends StatelessWidget {
                 color: Colors.teal,
               ),
               title: Text("Taxes et redevances touristiques"),
+            ),
+            ListTile(
+              onTap: () {
+                //
+                Get.to(FondTourisme());
+                //
+              },
+              leading: const Icon(
+                Icons.monetization_on,
+                color: Colors.teal,
+              ),
+              title: const Text("Fond tourisme"),
             ),
             ListTile(
               leading: Container(

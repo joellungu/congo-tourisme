@@ -8,15 +8,15 @@ import 'package:get/get.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:uuid/uuid.dart';
 
-class Taxes extends StatefulWidget {
+class FondTourisme extends StatefulWidget {
   //
   @override
   State<StatefulWidget> createState() {
-    return _Taxes();
+    return _FondTourisme();
   }
 }
 
-class _Taxes extends State<Taxes> {
+class _FondTourisme extends State<FondTourisme> {
   TextEditingController nom = TextEditingController();
   TextEditingController postnom = TextEditingController();
   TextEditingController prenom = TextEditingController();
@@ -41,11 +41,17 @@ class _Taxes extends State<Taxes> {
   List genres = ["Homme", "Femme"];
   int genre = 0;
   List types = [
-    "Pannoceau (annuel)",
-    "Licence exploitation (chaque 3 ans)",
-    "Permis exploit. site touristique",
-    "Certificat agré. technique",
-    "Certificat homologation",
+    "sur les prix de nuitées",
+    "sur les prix des repas ou boissons",
+    "sur les billets avion domestique",
+    "sur les billets avion international",
+    "sur les voyages lacustres",
+    "sur les voyages fluviaux",
+    "sur les voyages maritimes",
+    "sur les voyages ferovières",
+    "sur les voyages routiers",
+    "sur les transports touristiques",
+    "sur les billes activités touristiques"
   ];
   //
   //
@@ -78,7 +84,7 @@ class _Taxes extends State<Taxes> {
         backgroundColor: Colors.teal.shade900,
         centerTitle: true,
         title: const Text(
-          "Taxes et redevances",
+          "Fond tourisme",
           style: TextStyle(
             fontSize: 17,
           ),
@@ -108,15 +114,7 @@ class _Taxes extends State<Taxes> {
               )
             ],
           ),
-          const Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              "Type de taxes",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
+
           const SizedBox(
             height: 10,
           ),
@@ -136,7 +134,7 @@ class _Taxes extends State<Taxes> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  const Text("  Taxe et redevances:"),
+                  const Text("  Redevance:"),
                   const SizedBox(
                     width: 20,
                   ),
@@ -239,38 +237,42 @@ class _Taxes extends State<Taxes> {
                           ),
                           DropdownMenuItem(
                             value: 3,
-                            child: Text("Agence de voyage"),
+                            child: Text("Service traiteur (Minièr)"),
                           ),
                           DropdownMenuItem(
                             value: 4,
-                            child: Text("Agence de tourisme"),
+                            child: Text("Agence de voyage"),
                           ),
                           DropdownMenuItem(
                             value: 5,
-                            child: Text("Tour opérateur"),
+                            child: Text("Agence de tourisme"),
                           ),
                           DropdownMenuItem(
                             value: 6,
-                            child: Text("Site touristique"),
+                            child: Text("Tour opérateur"),
                           ),
                           DropdownMenuItem(
                             value: 7,
-                            child: Text("Compagnie transport aerienne"),
+                            child: Text("Site touristique"),
                           ),
                           DropdownMenuItem(
                             value: 8,
-                            child: Text("Compagnie transport maritime"),
+                            child: Text("Compagnie transport aerienne"),
                           ),
                           DropdownMenuItem(
                             value: 9,
-                            child: Text("Compagnie transport ferovière"),
+                            child: Text("Compagnie transport maritime"),
                           ),
                           DropdownMenuItem(
                             value: 10,
-                            child: Text("Compagnie transport routié"),
+                            child: Text("Compagnie transport ferovière"),
                           ),
                           DropdownMenuItem(
                             value: 11,
+                            child: Text("Compagnie transport routié"),
+                          ),
+                          DropdownMenuItem(
+                            value: 12,
                             child: Text("Compagnie transport lacustre"),
                           ),
                         ],
@@ -419,7 +421,6 @@ class _Taxes extends State<Taxes> {
               //
               if (connectivityResult == ConnectivityResult.mobile ||
                   connectivityResult == ConnectivityResult.wifi) {
-                //
                 Map e = {};
                 //
                 //
